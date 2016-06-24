@@ -1073,11 +1073,11 @@ namespace NHibernate.Hql.Ast.ANTLR
 				NodeTraverser traverser = new NodeTraverser(visitor);
 				traverser.TraverseDepthFirst(hqlSqlWithNode);
 				FromElement referencedFromElement = visitor.GetReferencedFromElement();
-				if (referencedFromElement != fromElement)
-				{
-					throw new InvalidWithClauseException(
-						"with-clause expressions did not reference from-clause element to which the with-clause was associated");
-				}
+				// if (referencedFromElement != fromElement)
+				// {
+					// throw new InvalidWithClauseException(
+						// "with-clause expressions did not reference from-clause element to which the with-clause was associated");
+				// }
 				SqlGenerator sql = new SqlGenerator(_sessionFactoryHelper.Factory, new CommonTreeNodeStream(adaptor, hqlSqlWithNode.GetChild(0)));
 
 				sql.whereExpr();
@@ -1129,10 +1129,10 @@ namespace NHibernate.Hql.Ast.ANTLR
 				FromElement fromElement = dotNode.FromElement;
 				if ( _referencedFromElement != null )
 				{
-					if ( fromElement != _referencedFromElement ) 
-					{
-						throw new HibernateException( "with-clause referenced two different from-clause elements" );
-					}
+					// if ( fromElement != _referencedFromElement ) 
+					// {
+						// throw new HibernateException( "with-clause referenced two different from-clause elements" );
+					// }
 				}
 				else
 				{
@@ -1143,10 +1143,10 @@ namespace NHibernate.Hql.Ast.ANTLR
 					//      needed because currently persister is the one that
 					//      creates and renders the join fragments for inheritence
 					//      hierarchies...
-					if ( _joinAlias != _referencedFromElement.TableAlias) 
-					{
-						throw new InvalidWithClauseException( "with clause can only reference columns in the driving table" );
-					}
+					// if ( _joinAlias != _referencedFromElement.TableAlias) 
+					// {
+						// throw new InvalidWithClauseException( "with clause can only reference columns in the driving table" );
+					// }
 				}
 			}
 			else if ( node is ParameterNode ) 
